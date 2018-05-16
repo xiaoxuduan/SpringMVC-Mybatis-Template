@@ -1,4 +1,4 @@
-package com.springmvcmybatistemplate;
+package com.springmvcmybatistemplate.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -3,5 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+    <mappers>
+        <package name="com.springmvcmybatistemplate.mapper"/>
+        <package name="com.springmvcmybatistemplate.test.mapper"/>
+    </mappers>
 </configuration>

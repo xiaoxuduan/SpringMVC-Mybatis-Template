@@ -38,8 +38,8 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
         <!-- mapperLocations, not mapperLocation. -->
-        <property name="mapperLocations" value="classpath:com/springmvcmybatistemplate/mapper/*.xml"/>
-    </bean>
+<!--         <property name="mapperLocations" value="classpath:com/springmvcmybatistemplate/test/mapper/*.xml"></property>
+ -->    </bean>
     
     <!-- transaction manager -->
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
