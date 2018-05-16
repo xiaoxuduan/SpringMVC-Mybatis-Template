@@ -2,13 +2,16 @@ package com.springmvcmybatistemplate.test.db;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.springmvcmybatistemplate.test.mapper.UserMapper;
 
 import com.springmvcmybatistemplate.test.entity.User;
 
 public class DBConnectionTest {
+	private final static Logger logger=LogManager.getLogger();
+	
 	private String resource="beans.xml";
 //	private String resource="springmvc-action.xml";
 	private SqlSessionFactory sqlSessionFactory;
@@ -16,7 +19,7 @@ public class DBConnectionTest {
 	
 	@Test
 	public void testConnection() throws Exception{
-		System.out.println("22");
+		logger.info("testConnection begin");
 		ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(resource);
 		System.out.println("33");
 		sqlSessionFactory=(SqlSessionFactory)context.getBean("sessionFactory");
@@ -36,5 +39,6 @@ public class DBConnectionTest {
 		System.out.println("user name: "+user.getUserName());
 		System.out.println("password: "+user.getPassword());
 		System.out.println("end.");
+		logger.info("testConnection end.");
 	}
 }

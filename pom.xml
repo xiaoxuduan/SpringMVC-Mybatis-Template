@@ -26,6 +26,7 @@
     <c3p0.version>0.9.5.2</c3p0.version>
     <log4j.version>1.2.17</log4j.version>
     <log4j-core.version>2.11.0</log4j-core.version>
+    <log4j-web.version>2.11.0</log4j-web.version>
     <slf4j.version>1.8.0-beta2</slf4j.version>
     <!-- <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version> -->
     <jackson.version>2.9.5</jackson.version>
@@ -135,6 +136,14 @@
         <artifactId>log4j</artifactId>
         <version>${log4j.version}</version>
     </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-web -->
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-web</artifactId>
+	    <version>${log4j-web.version}</version>
+	</dependency>
+	    
         
     <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
     <dependency>
