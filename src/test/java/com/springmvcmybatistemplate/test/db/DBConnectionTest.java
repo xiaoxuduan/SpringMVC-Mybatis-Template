@@ -4,11 +4,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.springmvcmybatistemplate.test.mapper.UserMapper;
 
 import com.springmvcmybatistemplate.test.entity.User;
 
 public class DBConnectionTest {
 	private String resource="beans.xml";
+//	private String resource="springmvc-action.xml";
 	private SqlSessionFactory sqlSessionFactory;
 	private SqlSession sqlSession=null;
 	
@@ -28,7 +30,9 @@ public class DBConnectionTest {
 		}
 		
 		System.out.println("2.");
-		User user=sqlSession.selectOne("test.findUserByName", "11");
+		User user=sqlSession.selectOne("test.findUserByName", "aa");
+//		UserMapper userMapper=(UserMapper)context.getBean("userMapper");
+//		User user=userMapper.findUserByName("aa");
 		System.out.println("user name: "+user.getUserName());
 		System.out.println("password: "+user.getPassword());
 		System.out.println("end.");
