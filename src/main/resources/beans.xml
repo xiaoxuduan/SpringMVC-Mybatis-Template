@@ -19,6 +19,8 @@
     <!-- scan packages -->
     <context:component-scan base-package="com.springmvcmybatistemplate.dao, com.springmvcmybatistemplate.service"/>
     <context:component-scan base-package="com.springmvcmybatistemplate.test.dao, com.springmvcmybatistemplate.test.service"/>
+<!--     <context:component-scan base-package="com.springmvcmybatistemplate.controller"/>
+    <context:component-scan base-package="com.springmvcmybatistemplate.test.controller"/> -->
     
     <!-- dataSource -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

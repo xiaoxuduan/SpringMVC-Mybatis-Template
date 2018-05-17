@@ -21,10 +21,8 @@ public class DBConnectionTest {
 	public void testConnection() throws Exception{
 		logger.info("testConnection begin");
 		ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext(resource);
-		System.out.println("33");
 		sqlSessionFactory=(SqlSessionFactory)context.getBean("sessionFactory");
 		sqlSession=sqlSessionFactory.openSession();
-		System.out.println("1.");
 		if(sqlSession!=null){
 			System.out.println("Mybatis-database connection sucess. Current SQL configuration number: ");
 			System.out.println(sqlSession.getConfiguration().getMappedStatements().size());
@@ -32,13 +30,11 @@ public class DBConnectionTest {
 			System.out.println("Mybatis-database connection fail.");
 		}
 		
-		System.out.println("2.");
 		User user=sqlSession.selectOne("test.findUserByName", "aa");
 //		UserMapper userMapper=(UserMapper)context.getBean("userMapper");
 //		User user=userMapper.findUserByName("aa");
 		System.out.println("user name: "+user.getUserName());
 		System.out.println("password: "+user.getPassword());
-		System.out.println("end.");
 		logger.info("testConnection end.");
 	}
 }
