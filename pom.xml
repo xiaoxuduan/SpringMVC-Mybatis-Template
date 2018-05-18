@@ -226,7 +226,8 @@
    -->
   
   <build>
-    <finalName>mavenTest5</finalName>
+    <!-- the final packgae name. -->
+    <finalName>springmvcmybatistemplate</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
