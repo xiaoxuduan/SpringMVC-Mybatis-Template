@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<mapper namespace="com.springmvcmybatistemplate.mapper.UserMapper">
+    <resultMap type="com.springmvcmybatistemplate.entity.User" id="userRM">
+        <!-- primary key -->
+        <id property="userId" column="user_id"/>
+        <!-- common property -->
+        <result property="userName" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    
+    <!-- query one -->
+    <select id="get" parameterType="string" resultMap="userRM">
+        select * from user where user_id=#{userId}
+    </select>
+    
+    <!-- query many  -->
+    <select id="find" parameterType="java.util.HashMap" resultMap="userRM">
+        select * from user 
+        where 1=1
+        <if test="userName != null"> and username like #{userName} </if>
+        <if test="password != null"> and password = #{password} </if>
+    </select>
+    
+    <insert id="insert" parameterType="com.springmvcmybatistemplate.entity.User">
+        insert into user 
+        (user_id, username, password) 
+        values 
+        (
+            #{userId, jdbcType=VARCHAR}, 
+            #{userName, jdbcType=VARCHAR}, 
+            #{password, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <update id="update" parameterType="com.springmvcmybatistemplate.entity.User">
+        update user 
+        <set>
+            <if test="userName != null">password = #{usename, jdbcType=VARCHAR},</if>
+            <if test="password != null">password = #{password, jdbcType=VARCHAR}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
+    
+    <!-- delete one -->
+    <delete id="deleteById" parameterType="string">
+        delete from user 
+        where user_id = #{userId}
+    </delete>
+    
+    <!-- delete many, String[] array -->
+    <delete id="delete" parameterType="string">
+        delete from user 
+        where user_id in 
+        <foreach collection="array" item="userId" open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </delete>
+</mapper>

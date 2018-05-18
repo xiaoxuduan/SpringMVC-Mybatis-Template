@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+    // redirecto to ....
+    window.location.href="user/toLogin.action";
+</script>
+
 </head>
 <body>
 this is a index.jsp.<br>
