@@ -30,11 +30,12 @@ public class DBConnectionTest {
 			System.out.println("Mybatis-database connection fail.");
 		}
 		
-		User user=sqlSession.selectOne("test.findUserByName", "aa");
-//		UserMapper userMapper=(UserMapper)context.getBean("userMapper");
-//		User user=userMapper.findUserByName("aa");
-		System.out.println("user name: "+user.getUserName());
-		System.out.println("password: "+user.getPassword());
+		// Before run test below, the test mapperLocations in beans.xml should be uncommented.
+//		User user=sqlSession.selectOne("test.findUserByName", "aa");
+////		UserMapper userMapper=(UserMapper)context.getBean("userMapper");
+////		User user=userMapper.findUserByName("aa");
+//		System.out.println("user name: "+user.getUserName());
+//		System.out.println("password: "+user.getPassword());
 		logger.info("testConnection end.");
 	}
 }
