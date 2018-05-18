@@ -3,9 +3,11 @@ package com.springmvcmybatistemplate.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,17 +37,6 @@ public class UserController {
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("userName", request.getParameter("username"));
 		map.put("password", request.getParameter("password"));
-			
-			// test
-//			for(Map.Entry<String, String> entry: map.entrySet()){
-//				System.out.println(entry.getKey()+" "+entry.getValue()+".....................");
-//			}
-//		
-//			User user = userService.get("11");
-//			request.getSession().setAttribute("user", user);
-//			return "/home.jsp";
-		
-		
 		List<User> userList = userService.find(map);
 		if(userList!=null && userList.size()>0){
 			request.getSession().setAttribute("user", userList.get(0));
@@ -54,4 +45,25 @@ public class UserController {
 		model.addAttribute("errorMsg", "login failed. username or password is wrong.");
 		return "/login.jsp";
 	}
+	
+	@RequestMapping("/user/register.action")
+	public String register(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		// Check if the username has been registered.
+		Map<String, String> map=new HashMap<String, String>();
+		map.put("userName", request.getParameter("username"));
+		List<User> userList=userService.find(map);
+		if(userList!=null && userList.size()>0){
+			// if the username has been registered.
+			model.addAttribute("errorMsg", "Register failed. The username has been registered.");
+			return "/register.jsp";
+		}
+		User user=new User();
+		user.setUserId(UUID.randomUUID().toString());
+		user.setUserName(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+		userService.insert(user);
+		model.addAttribute("noticeMsg", "Register successed. Please login.");
+		return "/login.jsp";
+	}
+	
 }
